@@ -22,16 +22,27 @@ git clone https://github.com/AlexandrZhydyk/PartsOnlineStore.git
 ```shell
 pipenv install
 ```
-3. Add environment variables to ``config.py``:
+3. Install redis server on your host machine:
+```shell
+sudo apt-get install redis-server
+```
+4. Add environment variables to ``config.py``:
 
 * `DROPBOX_ACCESS_TOKEN`: `REQUIRED`
 * `AZURE_CONNECTING_STRING`: `REQUIRED`
+* `REDIS_HOST`: `REQUIRED`
+* `REDIS_PORT`: `REQUIRED`
+* `REDIS_DB`: `REQUIRED`
 
 ## Usage
 
 Run application:
 ```python
 uvicorn app:app --reload
+```
+Run celery:
+```shell
+celery -A services.tasks.celery_app worker -l info --pool=prefork
 ```
 
 

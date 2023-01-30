@@ -1,22 +1,20 @@
-from fastapi import FastAPI, Depends, File
+from fastapi import FastAPI, File
 
-from services.azure_service import AzureService
+from services import tasks
 
 app = FastAPI(title="nimble_task")
 
 
-def get_service():
-    return AzureService()
-
-
 @app.post("/upload")
-def upload_data(file_name: str, data: bytes = File(), service=Depends(get_service)):
-    return service.upload_file(file_name, data)
+def upload_data(filename: str, data: bytes = File()):
+    answer = tasks.upload_data.delay(filename=filename, data=data)
+    return answer.get()
 
 
 @app.get("/download")
-def download_data(file_name: str, service=Depends(get_service)):
-    return service.download_file(file_name)
+def download_data(filename: str):
+    answer = tasks.download_data.delay(filename=filename)
+    return answer.get()
 
 
 if __name__ == '__main__':

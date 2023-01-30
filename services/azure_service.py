@@ -1,5 +1,4 @@
 from azure.storage.blob import BlobServiceClient
-from typing import BinaryIO
 from starlette import status
 from starlette.responses import JSONResponse
 
@@ -20,19 +19,25 @@ class AzureService(ApiMethods):
     def get_credentials():
         return BlobServiceClient.from_connection_string(conf_azure.AZURE_CONNECTION_STRING)
 
-    def upload_file(self, filename: str, data: BinaryIO):
+    def upload_file(self, filename: str, data: bytes):
         try:
             blob_client = self._get_blob_client(self.container, filename)
             blob_client.upload_blob(data)
             return JSONResponse(status_code=status.HTTP_200_OK, content={"message": True})
         except Exception as err:
             print(err)
-            return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content={"message": err.message})
+            return JSONResponse(status_code=status.HTTP_409_CONFLICT, content={"message": err.message})
 
     def download_file(self, filename: str):
         try:
             blob_client = self._get_blob_client(self.container, filename)
-            data = blob_client.download_blob().readall()  # chunks()
-            return JSONResponse(status_code=status.HTTP_200_OK, content={"message": str(data)})
+            if blob_client.exists():
+                data = blob_client.download_blob().readall()  # chunks()
+                return JSONResponse(status_code=status.HTTP_200_OK, content={"message": str(data)})
+            return JSONResponse(status_code=status.HTTP_200_OK, content={"message": f"there is no file named {filename}"})
         except Exception as err:
+            print(err)
             return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content={"message": err.message})
+
+    def __str__(self):
+        return 'azure_service'

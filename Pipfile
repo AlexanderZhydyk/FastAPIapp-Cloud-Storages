@@ -8,6 +8,7 @@ fastapi = {extras = ["all"], version = "*"}
 azure-storage-blob = "*"
 azure-identity = "*"
 dropbox = "*"
+celery = {extras = ["redis"], version = "*"}
 
 [dev-packages]
 
