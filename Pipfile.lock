@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "328c979ab10c94baab4ff9e04823c0cb45e42493c2c2b6ba565a63a73d109ba8"
+            "sha256": "42b107ad02f690b942373992f821af3892f3727114c9df0c97077aa284ecffb8"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -265,7 +265,7 @@
                 "sha256:a0713dc7a1de3f06bc0df5a9567ad19ead2d3d5689b434768a6145bff77c0667",
                 "sha256:f184f0d851d96b6d29297354ed981b7dd71df7ff500d82fa6d11f0856bee8035"
             ],
-            "markers": "python_full_version >= '3.6.2' and python_full_version < '4.0.0'",
+            "markers": "python_version < '4' and python_full_version >= '3.6.2'",
             "version": "==0.3.0"
         },
         "click-plugins": {
@@ -316,7 +316,7 @@
                 "sha256:224e32b03eb46be70e12ef6d64e0be123a64e621ab4c0822ff6d450d52a540b9",
                 "sha256:89141536394f909066cabd112e3e1a37e4e654db00a25308b0f130bc3152eb46"
             ],
-            "markers": "python_version >= '3.7' and python_full_version < '4.0.0'",
+            "markers": "python_version >= '3.7' and python_version < '4'",
             "version": "==2.3.0"
         },
         "dropbox": {
@@ -681,6 +681,7 @@
             "hashes": [
                 "sha256:f7bb5f611fc600d15fa47b3974c8aa16e93724513b49b5f95c81e6624c83fa43"
             ],
+            "index": "pypi",
             "version": "==0.0.5"
         },
         "pytz": {
@@ -747,7 +748,7 @@
                 "sha256:64299f4909223da747622c030b781c0d7811e359c37124b4bd368fb8c6518baa",
                 "sha256:98b1b2782e3c6c4904938b84c0eb932721069dfdb9134313beff7c83c2df24bf"
             ],
-            "markers": "python_version >= '3.7' and python_full_version < '4.0.0'",
+            "markers": "python_version >= '3.7' and python_version < '4'",
             "version": "==2.28.2"
         },
         "requests-oauthlib": {

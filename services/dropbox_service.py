@@ -1,8 +1,5 @@
 import dropbox
 
-from typing import BinaryIO
-
-from celery import shared_task
 from starlette import status
 from starlette.responses import JSONResponse
 

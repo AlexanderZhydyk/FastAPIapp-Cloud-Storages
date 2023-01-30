@@ -27,3 +27,14 @@ def upload_data(filename: str, data: bytes, service=get_service()):
 @celery_app.task
 def download_data(filename: str, service=get_service()):
     return service.download_file(filename)
+
+
+@celery_app.task
+def get_files_list(service=get_service()):
+    return service.get_files_list()
+
+
+@celery_app.task
+def delete_file(filename: str, service=get_service()):
+    return service.delete_file(filename)
+

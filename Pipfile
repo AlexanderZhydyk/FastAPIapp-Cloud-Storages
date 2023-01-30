@@ -9,6 +9,7 @@ azure-storage-blob = "*"
 azure-identity = "*"
 dropbox = "*"
 celery = {extras = ["redis"], version = "*"}
+python-multipart = "*"
 
 [dev-packages]
 
