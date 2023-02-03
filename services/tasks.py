@@ -19,22 +19,22 @@ def get_service():
     return AzureService()
 
 
-@celery_app.task
+@celery_app.task(bind=True, default_retry_delay=300, max_retries=3)
 def upload_data(filename: str, data: bytes, service=get_service()):
     return service.upload_file(filename, data)
 
 
-@celery_app.task
+@celery_app.task(bind=True, default_retry_delay=300, max_retries=3)
 def download_data(filename: str, service=get_service()):
     return service.download_file(filename)
 
 
-@celery_app.task
+@celery_app.task(bind=True, default_retry_delay=300, max_retries=3)
 def get_files_list(service=get_service()):
     return service.get_files_list()
 
 
-@celery_app.task
+@celery_app.task(bind=True, default_retry_delay=300, max_retries=3)
 def delete_file(filename: str, service=get_service()):
     return service.delete_file(filename)
 
