@@ -3,10 +3,9 @@ from starlette import status
 from starlette.responses import JSONResponse
 
 from config import conf_azure
-from services.abs_service import ApiMethods
 
 
-class AzureService(ApiMethods):
+class AzureService:
 
     def __init__(self):
         self.container = "nimbletask"

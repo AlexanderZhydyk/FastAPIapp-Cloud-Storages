@@ -10,6 +10,7 @@ azure-identity = "*"
 dropbox = "*"
 celery = {extras = ["redis"], version = "*"}
 python-multipart = "*"
+flower = "*"
 
 [dev-packages]
 

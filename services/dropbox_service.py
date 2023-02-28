@@ -4,10 +4,9 @@ from starlette import status
 from starlette.responses import JSONResponse
 
 from config import conf_dropbox
-from services.abs_service import ApiMethods
 
 
-class DropboxService(ApiMethods):
+class DropboxService:
 
     def __init__(self):
         self.client = self.get_credentials()
